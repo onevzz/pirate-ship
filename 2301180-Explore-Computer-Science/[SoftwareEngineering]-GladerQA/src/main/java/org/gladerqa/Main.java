@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        // Set options to run on a specific profile in to avoid having to sign in manually (Google)
+        // Set options to run on a specific profile to avoid having to sign in manually (Google)
         EdgeOptions options = new EdgeOptions();
         //options.addArguments("user-data-dir=C:\\Users\\username\\AppData\\Local\\Microsoft\\Edge\\User Data");
         //options.addArguments("profile-directory=Default");
