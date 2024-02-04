@@ -13,9 +13,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Set options to run on a specific profile to avoid having to sign in manually (Google)
         EdgeOptions options = new EdgeOptions();
-        //options.addArguments("user-data-dir=C:\\Users\\username\\AppData\\Local\\Microsoft\\Edge\\User Data");
-        //options.addArguments("profile-directory=Default");
-        //options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+        options.addArguments("user-data-dir=C:\\Users\\username\\AppData\\Local\\Microsoft\\Edge\\User Data");
+        options.addArguments("profile-directory=Default");
+        options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
 
         // Establish the WebDriver (Microsoft Edge)
         EdgeDriver driver = new EdgeDriver(options);
