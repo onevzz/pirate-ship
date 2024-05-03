@@ -17,16 +17,21 @@ public class Main {
         int[][] a = genArray(10, 5, -100, 100);
         int[][] b = genArray(10, 5, -100, 100);
         int[][] c = genArray(5, 3, -100, 100);
+
         Mtx A = new Mtx(a); Mtx B = new Mtx(b); Mtx C = new Mtx(c);
+
         System.out.println("A =");
         A.printMatrix(); newLine();
+
         System.out.println("B =");
         B.printMatrix(); newLine();
+
         System.out.println("C =");
         C.printMatrix(); newLine();
 
         // A + B
-        if (!A.equalSize(B)) { System.out.println("A and B are not compatible"); newLine(); }
+        if (!A.equalSize(B))
+            System.out.println("A and B are not compatible"); newLine();
         else {
             Mtx ApB = A.add(B);
             System.out.println("A+B =");
@@ -39,7 +44,8 @@ public class Main {
         Bm2.printMatrix(); newLine();
 
         // A * B
-        if (!A.compatible(B)) { System.out.println("A and B are not compatible"); newLine(); }
+        if (!A.compatible(B))
+            System.out.println("A and B are not compatible"); newLine();
         else {
             Mtx AmB = A.mul(B);
             System.out.println("A*B =");
@@ -47,7 +53,8 @@ public class Main {
         }
 
         // A * C
-        if (!A.compatible(C)) { System.out.println("A and C are not compatible"); newLine(); }
+        if (!A.compatible(C))
+            System.out.println("A and C are not compatible"); newLine();
         else {
             Mtx AmC = A.mul(C);
             System.out.println("A*C =");
