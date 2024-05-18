@@ -23,3 +23,7 @@ I've went ahead and converted all .ipynb files to .py ones, for browsing conveni
 An Introductory Course to Object-Oriented Programming taught in **Java**.
 Since most of us used IntelliJ IDEA to complete the assignments, including me.
 I've only included the files ending in .java, for browsing convenience.
+
+Since I was not much of a principled programmer, insane variable names are to be expected.
+But thanks to the help of [katoretb](https://github.com/katoretb), there's now a **katoretb-version** directory
+available with sane variable names (free of *bendy*, *brother*, *ultimate*, *gameshow*, *extinction*, **you get the point**).
