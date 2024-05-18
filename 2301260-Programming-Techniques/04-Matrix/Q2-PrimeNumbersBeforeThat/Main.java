@@ -11,19 +11,20 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner brother = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter n: ");
-        int n = brother.nextInt();
-        brother.close();
+        int n = scanner.nextInt();
+        scanner.close();
+
         // Initialize ArrayList
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
+
         // Fill the ArrayList with prime numbers
-        for (int i=0; i<n; i++) {
-            if (isPrime(i)) { arrayList.add(i); }
-        }
+        for (int i=0; i<n; i++)
+            if (isPrime(i)) arrayList.add(i);
+
         // Print the contents of the ArrayList
-        for (int i : arrayList) {
+        for (int i : arrayList)
             System.out.println(i);
-        }
     }
 }
