@@ -7,20 +7,17 @@ import javax.swing.JComponent;
 
 public class LightComponent extends JComponent {
     public void paintComponent(Graphics ink) {
-        Graphics2D canvas = (Graphics2D) ink; // create canvas
-        Rectangle box = new Rectangle(50, 50, 100, 200); // drawing box to contain lights
-        canvas.draw(box);
-        
-        Ellipse2D.Double redLight = new Ellipse2D.Double(75, 60, 50, 50); // create red light
-        canvas.setColor(Color.RED);
-        canvas.fill(redLight);
-        
-        Ellipse2D.Double yellowLight = new Ellipse2D.Double(75, 125, 50, 50); // create yellow light
-        canvas.setColor(Color.YELLOW);
-        canvas.fill(yellowLight);
-
-        Ellipse2D.Double greenLight = new Ellipse2D.Double(75, 190, 50, 50); // create green light
-        canvas.setColor(Color.GREEN);
-        canvas.fill(greenLight);
+        Graphics2D bendy = (Graphics2D) ink;
+        Rectangle box = new Rectangle(50, 50, 100, 200);
+        bendy.draw(box);
+        Ellipse2D.Double rLight = new Ellipse2D.Double(75, 60, 50, 50);
+        Ellipse2D.Double yLight = new Ellipse2D.Double(75, 125, 50, 50);
+        Ellipse2D.Double gLight = new Ellipse2D.Double(75, 190, 50, 50);
+        bendy.setColor(Color.RED);
+        bendy.fill(rLight);
+        bendy.setColor(Color.YELLOW);
+        bendy.fill(yLight);
+        bendy.setColor(Color.GREEN);
+        bendy.fill(gLight);
     }
 }

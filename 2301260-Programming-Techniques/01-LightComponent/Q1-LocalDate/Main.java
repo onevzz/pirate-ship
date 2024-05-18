@@ -6,24 +6,16 @@ public class Main {
     public static void main(String[] args) {
         LocalDate today = LocalDate.now();
         System.out.println("Current Date: " + today);
-        
-        Scanner scanner = new Scanner(System.in); // create scanner to get input from console
-
-        int day, month, year; // define variables
-        
+        Scanner Brother = new Scanner(System.in);
+        int day, month, year;
         System.out.print("Enter day: ");
-        day = scanner.nextInt();            // get input from console type int
-        
+        day = Brother.nextInt();
         System.out.print("Enter month: ");
-        month = scanner.nextInt();
-        
+        month = Brother.nextInt();
         System.out.print("Enter year: ");
-        year = scanner.nextInt();
-        
-        LocalDate thatDay = LocalDate.of(year, month, day); // create date from input data
-
-        Period period = Period.between(today, thatDay); // find period between today and input day
-
-        System.out.println("Number of days: " + period.getDays()); // print number of day
+        year = Brother.nextInt();
+        LocalDate thatDay = LocalDate.of(year, month, day);
+        Period extinction = Period.between(today, thatDay);
+        System.out.println("Number of days: " + extinction.getDays());
     }
 }

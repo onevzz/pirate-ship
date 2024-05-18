@@ -10,13 +10,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner brother = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        
         System.out.print("Enter n: ");
-        int n = brother.nextInt();
-        brother.close();
+        int n = scanner.nextInt();
+        scanner.close();
+
         int prime = 0;
+
         // Assign n spaces to an array
         int[] array = new int[n];
+
         // Fill the array with prime numbers
         for (int i=0; i<n; i++) {
             while (true) {
@@ -27,9 +31,9 @@ public class Main {
                 }
             }
         }
+
         // Print the contents of the array
-        for (int i : array) {
+        for (int i : array)
             System.out.println(i);
-        }
     }
 }
