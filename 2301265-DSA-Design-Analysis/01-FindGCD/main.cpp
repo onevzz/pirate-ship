@@ -174,12 +174,18 @@ int FindGCD3(int m, int n, int& count)
     // Recursive Case
     count++; // if
     if (m > n)
+    {
+        count++; // modulo
         return FindGCD3(m % n, n, count);
+    }
     else
+    {
+        count++; // modulo
         return FindGCD3(m, n % m, count);
+    }
 }
 
-int main()
+void standard()
 {
     int m, n;
     int c1 = 0, c2 = 0, c3 = 0;
@@ -197,6 +203,75 @@ int main()
     cout << "FindGCD1: " << gcd1 << ", Operations Executed: " << c1 << endl;
     cout << "FindGCD2: " << gcd2 << ", Operations Executed: " << c2 << endl;
     cout << "FindGCD3: " << gcd3 << ", Operations Executed: " << c3 << endl;
+}
+
+void graph()
+{
+
+    int c = 0;
+    int gcd = 1;
+    int maxValue = 1;
+    vector<int> c1;
+    vector<int> c2;
+    vector<int> c3;
+
+    cout << "Please specify the max value that you would like to compute." << endl;
+    cout << "The results will be in (m,n,gcd,operations)" << endl;
+    cout << "MAX: ";
+    cin >> maxValue;
+
+    cout << "\nFindGCD1 =================================================" << endl;
+    for (int i = 1; i <= maxValue; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            c = 0;
+            gcd = FindGCD1(i, j, c);
+            cout << i << "," << j << "," << gcd << "," << c << endl;
+            c1.push_back(c);
+        }
+    }
+
+    cout << "\nFindGCD2 =================================================" << endl;
+    for (int i = 1; i <= maxValue; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            c = 0;
+            gcd = FindGCD2(i, j, c);
+            cout << i << "," << j << "," << gcd << "," << c << endl;
+            c2.push_back(c);
+        }
+    }
+
+    cout << "\nFindGCD3 =================================================" << endl;
+    for (int i = 1; i <= maxValue; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            c = 0;
+            gcd = FindGCD3(i, j, c);
+            cout << i << "," << j << "," << gcd << "," << c << endl;
+            c3.push_back(c);
+        }
+    }
+
+    cout << "\n\nFindGCD1:";
+    for (int i : c1)
+        cout << " " << i;
+    cout << "\n\nFindGCD2:";
+    for (int i : c2)
+        cout << " " << i;
+    cout << "\n\nFindGCD3:";
+    for (int i : c3)
+        cout << " " << i;
+
+    cout << endl;
+}
+
+int main()
+{
+    standard();
 
     return 0;
 }
