@@ -9,8 +9,6 @@ using namespace std;
 vector<int> common(const vector<int>& mFactors, vector<int> nFactors, int& count)
 {
     vector<int> commonFactors;
-    count++; // vector
-
     for (int i : mFactors)
     {
         auto it = find(nFactors.begin(), nFactors.end(), i);
@@ -18,11 +16,8 @@ vector<int> common(const vector<int>& mFactors, vector<int> nFactors, int& count
         {
             commonFactors.push_back(i);
             nFactors.erase(it);
-            count += 2; // push, erase
         }
-        count += 3; // for, auto, if
     }
-    count++; // for
 
     return commonFactors;
 }
@@ -31,14 +26,10 @@ vector<int> common(const vector<int>& mFactors, vector<int> nFactors, int& count
 int compute(const vector<int>& commonFactors, int& count)
 {
     int gcd = 1;
-    count++; // int
-
     for (int i : commonFactors)
     {
         gcd *= i;
-        count += 2; // for, gcd
     }
-    count++; // for
 
     return gcd;
 }
@@ -47,19 +38,14 @@ int compute(const vector<int>& commonFactors, int& count)
 vector<int> naive(int n, int& count)
 {
     vector<int> factors;
-    count++; // vector
-
     for (int i = 2; i <= n; i++)
     {
         while (n % i == 0)
         {
             factors.push_back(i);
             n /= i;
-            count += 3; // while, push, divide
         }
-        count += 2; // for, while
     }
-    count++; // for
 
     return factors;
 }
@@ -69,7 +55,6 @@ vector<int> eratosthenes(int max, int& count)
 {
     vector<bool> isPrime(max + 1, true);
     vector<int> primes;
-    count += 2; // vector, vector
 
     for (int i = 2; i <= max; i++)
     {
@@ -79,13 +64,9 @@ vector<int> eratosthenes(int max, int& count)
             for (int f = i * i; f <= max; f += i)
             {
                 isPrime[f] = false;
-                count += 2; // for, isPrime
             }
-            count += 2; // push, for
         }
-        count += 2; // for, if
     }
-    count++; // for
 
     return primes;
 }
@@ -94,27 +75,18 @@ vector<int> eratosthenes(int max, int& count)
 vector<int> eratosthenesFactor(int n, const vector<int>& primes, int& count)
 {
     vector<int> factors;
-    count++; // vector
-
     for (int i : primes)
     {
-        count++; // for
-
         while (n % i == 0)
         {
             factors.push_back(i);
             n /= i;
-            count += 3; // while, push, divide
         }
-        count++; // while
-
         if (n == 1)
         {
             break;
         }
-        count++; // if
     }
-    count++; // if || for
 
     return factors;
 }
@@ -131,8 +103,6 @@ int FindGCD1(int m, int n, int& count)
 
     // STEP4: Compute the product of all the common prime factors
     int gcd = compute(commonFactors, count);
-
-    count += 4; // vector, vector, vector, int
 
     // MISSION ACCOMPLISHED
     return gcd;
@@ -154,8 +124,6 @@ int FindGCD2(int m, int n, int& count)
     // STEP4: Compute the product of all the common prime factors
     int gcd = compute(commonFactors, count);
 
-    count += 6; // int, vector, vector, vector, vector, int
-
     // MISSION ACCOMPLISHED
     return gcd;
 }
@@ -164,15 +132,12 @@ int FindGCD2(int m, int n, int& count)
 int FindGCD3(int m, int n, int& count)
 {
     // Check for Invalid Values
-    count++; // if
     if (m == 0)
         return n;
-    count++; // if
     if (n == 0)
         return m;
 
     // Recursive Case
-    count++; // if
     if (m > n)
         return FindGCD3(m % n, n, count);
     else
