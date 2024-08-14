@@ -196,6 +196,11 @@ void standard()
     cout << "n: ";
     cin >> n;
 
+    if(m <= 1 || n <= 1){
+        cout << "m or n must be more than 1" << endl;
+        return;
+    }
+
     int gcd1 = FindGCD1(m, n, c1);
     int gcd2 = FindGCD2(m, n, c2);
     int gcd3 = FindGCD3(m, n, c3);
