@@ -20,12 +20,12 @@ struct Node {
 class ExpressionTree {
 public:
     Node* root;
-    
+
     ExpressionTree(const string& expr) {
         string modifiedExpr = modifyExpression(expr);
         root = buildTree(modifiedExpr);
     }
-    
+
     ~ExpressionTree() {
         destroyTree(root);
     }
@@ -82,7 +82,7 @@ private:
     Node* buildTree(const string& expr) {
         stack<Node*> nodes;
         stack<char> ops;
-        
+
         for (size_t i = 0; i < expr.length(); ++i) {
             if (expr[i] == ' ') continue;
 
@@ -148,7 +148,7 @@ private:
         if (node->value == "-") return leftValue - rightValue;
         if (node->value == "*") return leftValue * rightValue;
         if (node->value == "/") return leftValue / rightValue;
-        if (root->value == "^") return pow(leftValue, rightValue);
+        if (node->value == "^") return pow(leftValue, rightValue);
 
         return 0;
     }
@@ -266,7 +266,7 @@ string insertMultiplicationSign(const string& expr) {
 }
 
 int main() {
-    string testfile = "../customTestcase.txt";
+    string testfile = "./customTestcase.txt";
     string inf;
 
     cout << "1: Load custom test file." << endl;
@@ -279,9 +279,9 @@ int main() {
     }
 
     if(stoi(inf) == 2){
-        testfile = "../labTestcase.txt";
+        testfile = "./labTestcase.txt";
     }else if(stoi(inf) == 3){
-        testfile = "../testcaseGiven1.txt";
+        testfile = "./testcaseGiven1.txt";
     }
 
     ifstream MyFile(testfile);
