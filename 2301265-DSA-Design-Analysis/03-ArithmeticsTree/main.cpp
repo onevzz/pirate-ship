@@ -126,12 +126,13 @@ private:
     }
 
     bool isOperator(char c) {
-        return c == '+' || c == '-' || c == '*' || c == '/';
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
     }
 
     int precedence(char op) {
         if (op == '+' || op == '-') return 1;
         if (op == '*' || op == '/') return 2;
+        if (op == '^') return 3;
         return 0;
     }
 
@@ -147,6 +148,7 @@ private:
         if (node->value == "-") return leftValue - rightValue;
         if (node->value == "*") return leftValue * rightValue;
         if (node->value == "/") return leftValue / rightValue;
+        if (root->value == "^") return pow(leftValue, rightValue);
 
         return 0;
     }
