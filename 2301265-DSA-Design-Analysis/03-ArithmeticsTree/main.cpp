@@ -201,6 +201,7 @@ string fixParentheses(const string& expr) {
     return result;
 }
 
+// Deprecated
 string replaceExponentiation(const string& expr) {
     string result;
     bool inExponentiation = false;
@@ -294,10 +295,10 @@ int main() {
             cout << "Expression " << expr << ": 0" << endl;
             continue;
         }
-        // cout << replaceExponentiation(expr) << endl;
 
         ExpressionTree allYouCanTree(insertMultiplicationSign(fixParentheses(expr)));
         cout << "Expression " << expr << ": " << allYouCanTree.evaluate() << endl;
+        //cout << "ReplaceExponentiation " << expr << ": " << replaceExponentiation(expr) << endl;
     }
     return 0;
 }
