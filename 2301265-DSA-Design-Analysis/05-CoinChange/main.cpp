@@ -31,24 +31,24 @@ void coinChange(vector<int>& coins, int amount) {
 
 // Function to find the minimum number of coins to make change and the combination
 void minCoinChange(vector<int>& coins, int amount) {
-    vector<int> minCoins(amount + 1, INT_MAX);
+    vector<int> dp(amount + 1, INT_MAX);
     vector<vector<int>> coinCombinations(amount + 1);
-    minCoins[0] = 0;
+    dp[0] = 0;
 
     for (int coin : coins) {
         for (int i = coin; i <= amount; i++) {
-            if (minCoins[i - coin] != INT_MAX && minCoins[i - coin] + 1 < minCoins[i]) {
-                minCoins[i] = minCoins[i - coin] + 1;
+            if (dp[i - coin] != INT_MAX && dp[i - coin] + 1 < dp[i]) {
+                dp[i] = dp[i - coin] + 1;
                 coinCombinations[i] = coinCombinations[i - coin];
                 coinCombinations[i].push_back(coin);
             }
         }
     }
 
-    if (minCoins[amount] == INT_MAX) {
+    if (dp[amount] == INT_MAX) {
         cout << "No solution for making change with the given coins." << endl;
     } else {
-        cout << "Minimum number of coins to make change = " << minCoins[amount] << endl;
+        cout << "Minimum number of coins to make change = " << dp[amount] << endl;
         for (int coin : coinCombinations[amount]) {
             cout << coin << " ";
         }
