@@ -7,6 +7,7 @@
 using namespace std;
 
 // Function to find the number of ways to make change and list the combinations
+// Recurrence Eq: dp[i] = dp[i] + dp[i−c] for i > 0 with dp[0] = 1
 void coinChange(vector<int>& coins, int amount) {
     vector<vector<vector<int>>> dp(amount + 1);
     dp[0] = {{}};
@@ -30,6 +31,7 @@ void coinChange(vector<int>& coins, int amount) {
 }
 
 // Function to find the minimum number of coins to make change and the combination
+// Recurrence Eq: dp[i] = min(dp[i], dp[i−c] + 1) for i > 0 with dp[0] = 0
 void minCoinChange(vector<int>& coins, int amount) {
     vector<int> dp(amount + 1, INT_MAX);
     vector<vector<int>> coinCombinations(amount + 1);
