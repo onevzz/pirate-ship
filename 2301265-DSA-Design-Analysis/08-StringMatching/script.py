@@ -1,7 +1,7 @@
 import argparse
 import glob
 
-# Visualize grid and matched patterns
+# Visualize Grid and Matched Patterns
 def visualize_grid(grid, matches):
     print("Grid visualization with matches:")
     for i, row in enumerate(grid):
@@ -13,7 +13,7 @@ def visualize_grid(grid, matches):
                 visual_row += f" {cell} "
         print(visual_row)
 
-# Compute KMP prefix array
+# Compute KMP Prefix Array
 def compute_prefix_array(pattern):
     m = len(pattern)
     pi = [0] * m
@@ -26,7 +26,7 @@ def compute_prefix_array(pattern):
             pi[i] = j
     return pi
 
-# KMP search function
+# KMP Search Function
 def kmp_search(text, pattern, pi):
     n = len(text)
     m = len(pattern)
@@ -101,10 +101,10 @@ def read_test_case_from_file(filename):
         pattern = file.readline().strip().split()  # Split pattern by spaces
     return charset, n, m, pattern, grid
 
-# Main program for command-line arguments
+# Main Program
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Solve 2D string matching using KMP")
-    parser.add_argument('--visualize', action='store_true', help="Enable visualization of matches in the grid")
+    parser.add_argument('-v', '--visualize', action='store_true', help="Enable visualization of matches in the grid")
     
     args = parser.parse_args()
 
