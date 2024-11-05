@@ -50,45 +50,49 @@ def find_pattern_in_grid(grid, pattern):
     results = []
     matches = []
 
-    # Search left-to-right (LR) and right-to-left (RL)
+    # Search left-to-right (LR) and right-to-left (RL) with wrapping
     for i in range(n):
         row = grid[i]
 
-        # Left-to-right (LR)
-        lr_matches = kmp_search(row, pattern, pi)
-        #print(f"LR matches found at row {i}: {lr_matches}")
+        # Concatenate row with itself for wrap-around search (LR)
+        extended_row = row + row[:-1]
+        lr_matches = kmp_search(extended_row, pattern, pi)
         for start in lr_matches:
-            results.append((i + 1, start + 1, 'LR'))
-            matches.append((i, start))
-        
-        # Right-to-left (RL)
-        #reversed_pattern = pattern[::-1]
-        rl_matches = kmp_search(row[::-1], pattern, pi)
-        #print(f"RL matches found at row {i}: {rl_matches}")
-        for start in rl_matches:
-            adjusted_start = m - start
-            results.append((i + 1, adjusted_start, 'RL'))
-            matches.append((i, adjusted_start - 1))
+            if start < m:
+                results.append((i + 1, start + 1, 'LR'))
+                matches.append((i, start))
 
-    # Search top-to-bottom (UB) and bottom-to-top (BU)
+        # Right-to-left (RL)
+        reversed_row = row[::-1]
+        extended_reversed_row = reversed_row + reversed_row[:-1]
+        rl_matches = kmp_search(extended_reversed_row, pattern, pi)
+        for start in rl_matches:
+            if start < m:
+                adjusted_start = m - 1 - start  # Map to original grid index
+                results.append((i + 1, adjusted_start + 1, 'RL'))
+                matches.append((i, adjusted_start))
+
+    # Search top-to-bottom (UB) and bottom-to-top (BU) with wrapping
     for j in range(m):
         column = [grid[i][j] for i in range(n)]
-        
-        # Top-to-bottom (UB)
-        ub_matches = kmp_search(column, pattern, pi)
-        #print(f"UB matches found at column {j}: {ub_matches}")
+
+        # Concatenate column with itself for wrap-around search (UB)
+        extended_col = column + column[:-1]
+        ub_matches = kmp_search(extended_col, pattern, pi)
         for start in ub_matches:
-            results.append((start + 1, j + 1, 'UB'))
-            matches.append((start, j))
-        
+            if start < n:
+                results.append((start + 1, j + 1, 'UB'))
+                matches.append((start, j))
+
         # Bottom-to-top (BU)
-        #reversed_pattern = pattern[::-1]
-        bu_matches = kmp_search(column[::-1], pattern, pi)
-        #print(f"BU matches found at column {j}: {bu_matches}")
+        reversed_col = column[::-1]
+        extended_reversed_col = reversed_col + reversed_col[:-1]
+        bu_matches = kmp_search(extended_reversed_col, pattern, pi)
         for start in bu_matches:
-            adjusted_start = n - start
-            results.append((adjusted_start, j + 1, 'BU'))
-            matches.append((adjusted_start - 1, j))
+            if start < n:
+                adjusted_start = n - 1 - start  # Map to original grid index
+                results.append((adjusted_start + 1, j + 1, 'BU'))
+                matches.append((adjusted_start, j))
 
     return pi, results, matches
 
