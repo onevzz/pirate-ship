@@ -113,7 +113,7 @@ def read_test_case_from_file(filename):
 
 # Main Program
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Solve the Island Problem using graph algorithms")
+    parser = argparse.ArgumentParser(description="Solve the Island Problem using Graph Algorithms")
     parser.add_argument('-k', '--kosaraju', action='store_true', help="Run Kosaraju's algorithm")
     parser.add_argument('-t', '--tarjan', action='store_true', help="Run Tarjan's algorithm")
     parser.add_argument('-v', '--visualize', action='store_true', help="Enable visualization of the graph")
