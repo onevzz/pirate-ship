@@ -23,14 +23,14 @@ class Planet:
     # Using Single-source shortest paths
     # O(n)
     def CalCost(self) -> None:
-        for p in self.Path:
-            NewCost = self.CityCost[p[0]-1] + p[2]
-            if NewCost < self.CityCost[p[1]-1]:
-                self.CityCost[p[1]-1] = NewCost
+        for i in range(self.NCity):
+            for p in self.Path:
+                self.CityCost[p[1]-1] = min(self.CityCost[p[0]-1] + p[2], self.CityCost[p[1]-1])
         return
 
     # O(2n)
     def allocate_people(self) -> None:
+        print(self.CityCost)
         for i in range(self.NCity):
             if self.CityCost[i] == float('inf') or self.RemainPerson <= 0:
                 continue
@@ -90,10 +90,20 @@ def main() -> None:
     TestCaseDataList = [RFile(filename) for filename in TestCaseFileList]
     PlanetList = [PlanetBuilder(D) for D in TestCaseDataList]
 
+    
 
     for i, PN in enumerate(PlanetList):
+        ans = True
         PN.CalCost()
         PN.allocate_people()
-        print("\n".join([TestCaseFileList[i], PN.strFinal(), "-"*20]))
+        print(TestCaseFileList[i])
+        for c in PN.PersonCost:
+            if int(c) < 0:
+                print("No Answer")
+                ans = False
+                break
+        if ans:
+            print("\n".join([PN.strFinal(), "-"*20]))
+    
 
 main()
